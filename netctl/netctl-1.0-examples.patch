@@ -1,0 +1,13 @@
+diff -u -r netctl-1.0/Makefile netctl-1.0.examples/Makefile
+--- netctl-1.0/Makefile	2013-04-23 18:57:52.000000000 +0900
++++ netctl-1.0.examples/Makefile	2013-05-19 16:30:36.351859282 +0900
+@@ -6,8 +6,7 @@
+ 	# Documentation
+ 	$(MAKE) -C docs install
+ 	# Configuration files
+-	install -d $(DESTDIR)/etc/netctl/{examples,hooks,interfaces}
+-	install -m644 docs/examples/* $(DESTDIR)/etc/netctl/examples/
++	install -d $(DESTDIR)/etc/netctl/{hooks,interfaces}
+ 	# Libs
+ 	install -d $(DESTDIR)/usr/lib/network/connections
+ 	install -m644 src/lib/{globals,ip,rfkill,wpa} $(DESTDIR)/usr/lib/network/

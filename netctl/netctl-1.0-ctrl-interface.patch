@@ -1,0 +1,12 @@
+diff -u -r netctl-1.0/src/lib/wpa netctl-1.0.ctrl-interface/src/lib/wpa
+--- netctl-1.0/src/lib/wpa	2013-04-23 18:57:52.000000000 +0900
++++ netctl-1.0.ctrl-interface/src/lib/wpa	2013-05-19 16:23:50.766524719 +0900
+@@ -176,7 +176,7 @@
+         report_debug "The anticipated filename '$config_file' is not available"
+         return 1
+     fi
+-    mkdir -p "$STATE_DIR" /run/wpa_supplicant
++    mkdir -p "$STATE_DIR"
+     if ! : > "$config_file"; then
+         report_debug "Could not create the configuration file '$config_file'"
+         return 1
