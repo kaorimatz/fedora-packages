@@ -20,7 +20,7 @@ fi
 
 for SPEC in `find $PROJECT_DIR -type f -name '*.spec'`; do
   DIR=`dirname $SPEC`
-  PACKAGE_NAME=`basename $SPEC jspec`
+  PACKAGE_NAME=`basename $SPEC .spec`
 
   if [ -n "$TARGET_PACKAGE" ] && [ "$TARGET_PACKAGE" != "$PACKAGE_NAME" ]; then
     continue
