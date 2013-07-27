@@ -1,5 +1,5 @@
 Name: netctl
-Version: 1.1
+Version: 1.2
 Release: 1%{?dist}
 Summary: Profile based systemd network management
 
@@ -7,7 +7,6 @@ License: GPLv2+
 URL: http://projects.archlinux.org/netctl.git/
 Source0: ftp://ftp.archlinux.org/other/packages/%{name}/%{name}-%{version}.tar.xz
 Patch0: %{name}-%{version}-ctrl-interface.patch
-Patch1: %{name}-%{version}-examples.patch
 
 BuildArch: noarch
 BuildRequires: asciidoc
@@ -23,7 +22,6 @@ Netctl is a profile based systemd network management.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 find -type f | xargs sed -i "s|/usr/lib/network|%{_libexecdir}/%{name}|g"
 
 
@@ -32,6 +30,8 @@ find -type f | xargs sed -i "s|/usr/lib/network|%{_libexecdir}/%{name}|g"
 
 %install
 make DESTDIR=%{buildroot} install
+
+rm -r %{buildroot}/%{_sysconfdir}/%{name}/examples
 
 install -D -m 644 contrib/bash-completion %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
 install -D -m 644 contrib/zsh-completion %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
@@ -69,6 +69,10 @@ fi
 
 
 %changelog
+* Sat Jul 27 2013 kaorimatz <kaorimatz@gmail.com> 1.2-1
+- Upgrade to upstream version 1.2
+- Remove -examples patch
+
 * Sun Jun 16 2013 kaorimatz <kaorimatz@gmail.com> 1.1-1
 - Upgrade to upstream version 1.1
 - Add missing requires on systemd
