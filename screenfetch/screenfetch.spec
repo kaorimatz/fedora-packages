@@ -1,5 +1,5 @@
 Name: screenfetch
-Version: 3.0.0
+Version: 3.0.5
 Release: 1%{?dist}
 Summary: Bash screenshot info grabber
 
@@ -34,5 +34,8 @@ install -D -m 755 %{name}-dev %{buildroot}%{_bindir}/%{name}
 
 
 %changelog
+* Sat Jul 27 2013 kaorimatz <kaorimatz@gmail.com> 3.0.5-1
+- Upgrade to upstream version 3.0.5
+
 * Sun Jun 23 2013 kaorimatz <kaorimatz@gmail.com> 3.0.0-1
 - Initial package
