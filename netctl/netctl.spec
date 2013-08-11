@@ -1,10 +1,10 @@
 Name: netctl
-Version: 1.2
+Version: 1.3
 Release: 1%{?dist}
 Summary: Profile based systemd network management
 
 License: GPLv2+
-URL: http://projects.archlinux.org/netctl.git/
+URL: http://projects.archlinux.org/%{name}.git/
 Source0: ftp://ftp.archlinux.org/other/packages/%{name}/%{name}-%{version}.tar.xz
 Patch0: %{name}-%{version}-ctrl-interface.patch
 
@@ -16,7 +16,7 @@ Requires(preun): systemd
 Requires(postun): systemd
 
 %description
-Netctl is a profile based systemd network management.
+%{name} is a profile based systemd network management.
 
 
 %prep
@@ -69,6 +69,9 @@ fi
 
 
 %changelog
+* Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> 1.3-1
+- Upgrade to upstream version 1.3
+
 * Sat Jul 27 2013 kaorimatz <kaorimatz@gmail.com> 1.2-1
 - Upgrade to upstream version 1.2
 - Remove -examples patch
