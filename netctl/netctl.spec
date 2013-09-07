@@ -1,19 +1,25 @@
 Name: netctl
 Version: 1.3
-Release: 1%{?dist}
-Summary: Profile based systemd network management
-
+Release: 2%{?dist}
 License: GPLv2+
 URL: http://projects.archlinux.org/%{name}.git/
+Summary: Profile based systemd network management
+
 Source0: ftp://ftp.archlinux.org/other/packages/%{name}/%{name}-%{version}.tar.xz
 Patch0: %{name}-%{version}-ctrl-interface.patch
+Patch1: %{name}-%{version}-wpa_actiond-action-script.patch
 
 BuildArch: noarch
 BuildRequires: asciidoc
-Requires: dhclient,ifplugd,iproute,wpa_supplicant
+Requires: dhclient
+Requires: ifplugd
+Requires: iproute
+Requires: wpa_supplicant
+Requires: wpa_actiond
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
+
 
 %description
 %{name} is a profile based systemd network management.
@@ -22,7 +28,9 @@ Requires(postun): systemd
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 find -type f | xargs sed -i "s|/usr/lib/network|%{_libexecdir}/%{name}|g"
+find -type f | xargs sed -i "s|/run/network|/run/%{name}|g"
 
 
 %build
@@ -31,10 +39,11 @@ find -type f | xargs sed -i "s|/usr/lib/network|%{_libexecdir}/%{name}|g"
 %install
 make DESTDIR=%{buildroot} install
 
-rm -r %{buildroot}/%{_sysconfdir}/%{name}/examples
+rm -r %{buildroot}%{_sysconfdir}/%{name}/examples
 
-install -D -m 644 contrib/bash-completion %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
-install -D -m 644 contrib/zsh-completion %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+install -D -m 644 contrib/bash-completion %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}
+install -D -m 644 contrib/zsh-completion %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -D -m 755 %{_libexecdir}/%{name}/auto.action %{buildroot}%{_sysconfdir}/wpa_actiond/%{name}.action
 
 
 %files
@@ -45,7 +54,8 @@ install -D -m 644 contrib/zsh-completion %{buildroot}/%{_datadir}/zsh/site-funct
 %{_libexecdir}/%{name}
 %{_mandir}/man[157]/*
 %{_sysconfdir}/bash_completion.d/%{name}
-%{_sysconfdir}/ifplugd/*
+%{_sysconfdir}/ifplugd/%{name}.action
+%{_sysconfdir}/wpa_actiond/%{name}.action
 %{_unitdir}/*
 
 
@@ -69,6 +79,9 @@ fi
 
 
 %changelog
+* Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> 1.3-2
+- Require wpa_actiond
+
 * Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> 1.3-1
 - Upgrade to upstream version 1.3
 
