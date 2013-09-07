@@ -1,0 +1,19 @@
+## <summary>policy for wpa_actiond</summary>
+
+#######################################
+## <summary>
+##	Send to wpa_actiond with a unix dgram socket.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`wpa_actiond_dgram_send',`
+	gen_require(`
+		type wpa_actiond_t, wpa_actiond_tmp_t;
+	')
+
+	dgram_send_pattern($1, tmp_t, wpa_actiond_tmp_t, wpa_actiond_t)
+')
