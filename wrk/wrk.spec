@@ -1,5 +1,5 @@
 Name: wrk
-Version: 2.2.0
+Version: 3.0.0
 Release: 1%{?dist}
 Summary: Modern HTTP benchmarking tool
 
@@ -33,5 +33,7 @@ install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
 
 
 %changelog
+* Tue Oct 01 2013 kaorimatz <kaorimatz@gmail.com> 3.0.0-1
+* Upgrade to upstream version 3.0.0
 * Sat Jun 22 2013 kaorimatz <kaorimatz@gmail.com> 2.2.0-1
 - Initial package
