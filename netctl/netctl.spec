@@ -6,8 +6,8 @@ restorecon -R %{_localstatedir}/run/netctl; \
 restorecon -R %{_unitdir}/netctl*;
 
 Name: netctl
-Version: 1.3
-Release: 3%{?dist}
+Version: 1.4
+Release: 1%{?dist}
 License: GPLv2+
 URL: http://projects.archlinux.org/%{name}.git/
 Summary: Profile based systemd network management
@@ -22,7 +22,6 @@ Patch1: %{name}-%{version}-wpa_actiond-action-script.patch
 BuildArch: noarch
 BuildRequires: asciidoc
 Requires: dhclient
-Requires: ifplugd
 Requires: iproute
 Requires: wpa_supplicant
 Requires: wpa_actiond
@@ -56,8 +55,9 @@ This package installs and sets up the SELinux policy security module for
 %setup -q
 %patch0 -p1
 %patch1 -p1
-find -type f | xargs sed -i "s|/usr/lib/network|%{_libexecdir}/%{name}|g"
-find -type f | xargs sed -i "s|/run/network|/run/%{name}|g"
+find -type f | xargs sed -i 's,/usr/lib/network,%{_libexecdir}/%{name},g'
+find -type f | xargs sed -i 's,/run/network,/run/%{name},g'
+find -type f | xargs sed -i 's,/usr/bin/ifplugd,%{_sbindir}/ifplugd,g'
 
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
@@ -132,6 +132,10 @@ fi
 
 
 %changelog
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.4-1
+- Upgrade to upstream version 1.4
+- Remove ifplugd from dependencies
+
 * Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.3-3
 - Add SELinux policy
 - Fix to install auto.action
