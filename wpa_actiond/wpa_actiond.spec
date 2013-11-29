@@ -1,10 +1,10 @@
-%define relabel_files \
+%global relabel_files \
 restorecon -R %{_bindir}/wpa_actiond; \
 restorecon -R %{_sysconfdir}/wpa_actiond;
 
 Name: wpa_actiond
 Version: 1.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2
 URL: http://projects.archlinux.org/wpa_actiond.git/
 Summary: Connect to wpa_supplicant and handle connect and disconnect events
@@ -20,10 +20,12 @@ Requires: wpa_supplicant
 Summary: SELinux policy module for %{name}
 
 BuildArch: noarch
-Requires: %{name} = %{version}-%{release}
-Requires: policycoreutils, libselinux-utils
-Requires(post): selinux-policy-base >= %{_selinux_policy_version}, policycoreutils
-Requires(post): %{name} = %{version}-%{release}
+BuildRequires: selinux-policy-devel
+Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: selinux-policy >= %{_selinux_policy_version}
+Requires(post): libselinux-utils
+Requires(post): policycoreutils
+Requires(postun): libselinux-utils
 Requires(postun): policycoreutils
 
 
@@ -47,31 +49,29 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
 
 %install
-install -D %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
 install -d %{buildroot}%{_sysconfdir}/%{name}
 
-install -D %{name}.pp %{buildroot}%{_datadir}/selinux/packages/%{name}.pp
-install -D %{name}.if %{buildroot}%{_datadir}/selinux/devel/include/contrib/%{name}.if
+install -D -m 644 %{name}.pp %{buildroot}%{_datadir}/selinux/packages/%{name}.pp
+install -D -m 644 %{name}.if %{buildroot}%{_datadir}/selinux/devel/include/contrib/%{name}.if
 
 
 %post selinux
 semodule -n -i %{_datadir}/selinux/packages/%{name}.pp
-if /usr/sbin/selinuxenabled ; then
+if /usr/sbin/selinuxenabled; then
   /usr/sbin/load_policy
   %relabel_files
-fi;
-exit 0
+fi
 
 
 %postun selinux
 if [ $1 -eq 0 ]; then
   semodule -n -r %{name}
-  if /usr/sbin/selinuxenabled ; then
+  if /usr/sbin/selinuxenabled; then
     /usr/sbin/load_policy
     %relabel_files
-  fi;
-fi;
-exit 0
+  fi
+fi
 
 
 %files
@@ -85,5 +85,10 @@ exit 0
 
 
 %changelog
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.4-2
+- Fix SELinux policy with regard to netctl
+- Fix wrong permissions
+- Fix wrong dependencies for the SElinux policy module
+
 * Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> 1.4-1
-* Initial package
+- Initial package

@@ -1,2 +1,2 @@
 /usr/bin/wpa_actiond  --  gen_context(system_u:object_r:wpa_actiond_exec_t,s0)
-/etc/wpa_actiond/.+  --  gen_context(system_u:object_r:wpa_actiond_exec_t,s0)
+/etc/wpa_actiond/.+   --  gen_context(system_u:object_r:wpa_actiond_exec_t,s0)

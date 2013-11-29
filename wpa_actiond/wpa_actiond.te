@@ -1,40 +1,60 @@
-policy_module(wpa_actiond, 1.0.0)
+policy_module(wpa_actiond, 1.1.0)
+
+########################################
+#
+# Declarations
+#
 
 type wpa_actiond_t;
 type wpa_actiond_exec_t;
+init_daemon_domain(wpa_actiond_t, wpa_actiond_exec_t)
+
 type wpa_actiond_tmp_t;
+files_tmp_file(wpa_actiond_tmp_t)
 
-init_daemon_domain(`wpa_actiond_t', `wpa_actiond_exec_t')
-files_tmp_file(`wpa_actiond_tmp_t')
+########################################
+#
+# Local policy
+#
 
-logging_send_syslog_msg(`wpa_actiond_t')
+logging_send_syslog_msg(wpa_actiond_t)
 
-# Allow to create a PID file in /run/network
-manage_files_pattern(`wpa_actiond_t', `var_run_t', `var_run_t')
+# Avoid a circular dependency with netctl
+optional_policy(`
+  gen_require(`
+    type netctl_var_run_t;
+  ')
+  files_search_pids(wpa_actiond_t)
+  manage_files_pattern(wpa_actiond_t, netctl_var_run_t, netctl_var_run_t)
+')
 
-# Allow to create a socket in /tmp and receive messages from wpa_supplicant through it
+# Allow to create a socket in /tmp and receive messages from wpa_supplicant through the socket
 allow wpa_actiond_t self:unix_dgram_socket create_socket_perms;
-files_rw_generic_tmp_dir(`wpa_actiond_t')
-files_tmp_filetrans(`wpa_actiond_t', `wpa_actiond_tmp_t', `sock_file');
+files_rw_generic_tmp_dir(wpa_actiond_t)
+files_tmp_filetrans(wpa_actiond_t, wpa_actiond_tmp_t, sock_file);
 allow wpa_actiond_t wpa_actiond_tmp_t:sock_file { create unlink };
-require {
-  type NetworkManager_t;
-}
-wpa_actiond_dgram_send(`NetworkManager_t')
+optional_policy(`
+  gen_require(`
+    type NetworkManager_t;
+  ')
+  wpa_actiond_dgram_send(NetworkManager_t)
+')
 
 # Allow to send data to wpa_supplicant through a socket in /run/wpa_supplicant
-require {
-  type NetworkManager_var_run_t;
-  type NetworkManager_t;
-}
-dgram_send_pattern(`wpa_actiond_t', `NetworkManager_var_run_t', `NetworkManager_var_run_t', `NetworkManager_t')
+optional_policy(`
+  gen_require(`
+    type NetworkManager_t;
+    type NetworkManager_var_run_t;
+  ')
+  dgram_send_pattern(wpa_actiond_t, NetworkManager_var_run_t, NetworkManager_var_run_t, NetworkManager_t)
+')
 
 # Allow to execute an action script
-corecmd_exec_bin(`wpa_actiond_t')
-corecmd_exec_shell(`wpa_actiond_t')
-sysnet_domtrans_ifconfig(`wpa_actiond_t')
-sysnet_domtrans_dhcpc(`wpa_actiond_t')
-sysnet_read_dhcpc_pid(`wpa_actiond_t')
-sysnet_delete_dhcpc_pid(`wpa_actiond_t')
-kernel_read_system_state(`wpa_actiond_t')
-auth_read_passwd(`wpa_actiond_t')
+auth_read_passwd(wpa_actiond_t)
+corecmd_exec_bin(wpa_actiond_t)
+corecmd_exec_shell(wpa_actiond_t)
+kernel_read_system_state(wpa_actiond_t)
+sysnet_domtrans_ifconfig(wpa_actiond_t)
+sysnet_domtrans_dhcpc(wpa_actiond_t)
+sysnet_read_dhcpc_pid(wpa_actiond_t)
+sysnet_delete_dhcpc_pid(wpa_actiond_t)

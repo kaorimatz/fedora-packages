@@ -1,4 +1,4 @@
-## <summary>policy for wpa_actiond</summary>
+## <summary>Connect to wpa_supplicant and handle connect and disconnect events</summary>
 
 #######################################
 ## <summary>
@@ -16,4 +16,41 @@ interface(`wpa_actiond_dgram_send',`
 	')
 
 	dgram_send_pattern($1, tmp_t, wpa_actiond_tmp_t, wpa_actiond_t)
+')
+
+########################################
+## <summary>
+##	Execute wpa_actiond with a domain transition.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`wpa_actiond_domtrans',`
+	gen_require(`
+		type wpa_actiond_t, wpa_actiond_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, wpa_actiond_exec_t, wpa_actiond_t)
+')
+
+########################################
+## <summary>
+##	Send a generic signal to wpa_actiond
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`wpa_actiond_signal',`
+	gen_require(`
+		type wpa_actiond_t;
+	')
+
+	allow $1 wpa_actiond_t:process signal;
 ')
