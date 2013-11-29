@@ -1,0 +1,58 @@
+## <summary>Profile based systemd network management</summary>
+
+########################################
+## <summary>
+##	Read netctl PID files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`netctl_read_pid_files',`
+	gen_require(`
+		type netctl_var_run_t;
+	')
+
+	files_search_pids($1)
+	read_files_pattern($1, netctl_var_run_t, netctl_var_run_t)
+')
+
+########################################
+## <summary>
+##	Manage netctl PID files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`netctl_manage_pid_files',`
+	gen_require(`
+		type netctl_var_run_t;
+	')
+
+	files_search_pids($1)
+	manage_files_pattern($1, netctl_var_run_t, netctl_var_run_t)
+')
+
+########################################
+## <summary>
+##	Execute netctl with a domain transition.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`netctl_domtrans',`
+	gen_require(`
+		type netctl_t, netctl_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, netctl_exec_t, netctl_t)
+')

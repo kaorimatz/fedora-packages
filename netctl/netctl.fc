@@ -1,0 +1,5 @@
+/usr/bin/netctl                   --  gen_context(system_u:object_r:netctl_exec_t,s0)
+/usr/bin/netctl-auto              --  gen_context(system_u:object_r:netctl_exec_t,s0)
+/usr/libexec/netctl/network       --  gen_context(system_u:object_r:netctl_exec_t,s0)
+/var/run/netctl(/.*)?                 gen_context(system_u:object_r:netctl_var_run_t,s0)
+/usr/lib/systemd/system/netctl.*  --  gen_context(system_u:object_r:netctl_unit_file_t,s0)

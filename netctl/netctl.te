@@ -1,0 +1,52 @@
+policy_module(netctl, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type netctl_t;
+type netctl_exec_t;
+init_system_domain(netctl_t, netctl_exec_t)
+
+type netctl_unit_file_t;
+systemd_unit_file(netctl_unit_file_t)
+
+type netctl_var_run_t;
+files_pid_file(netctl_var_run_t)
+
+########################################
+#
+# Local policy
+#
+
+manage_dirs_pattern(netctl_t, netctl_var_run_t, netctl_var_run_t)
+manage_files_pattern(netctl_t, netctl_var_run_t, netctl_var_run_t)
+files_pid_filetrans(netctl_t, netctl_var_run_t, { file dir })
+
+auth_read_passwd(netctl_t)
+corecmd_exec_bin(netctl_t)
+dev_read_sysfs(netctl_t)
+kernel_read_system_state(netctl_t)
+sysnet_domtrans_ifconfig(netctl_t)
+sysnet_domtrans_dhcpc(netctl_t)
+sysnet_read_dhcpc_pid(netctl_t)
+sysnet_delete_dhcpc_pid(netctl_t)
+
+optional_policy(`
+  networkmanager_domtrans(netctl_t)
+  networkmanager_read_pid_files(netctl_t)
+  networkmanager_signal(netctl_t)
+')
+
+optional_policy(`
+  gen_require(`
+    type NetworkManager_t;
+  ')
+  netctl_read_pid_files(NetworkManager_t)
+')
+
+optional_policy(`
+  wpa_actiond_domtrans(netctl_t)
+  wpa_actiond_signal(netctl_t)
+')
