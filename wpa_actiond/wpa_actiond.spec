@@ -4,7 +4,7 @@ restorecon -R %{_sysconfdir}/wpa_actiond;
 
 Name: wpa_actiond
 Version: 1.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2
 URL: http://projects.archlinux.org/wpa_actiond.git/
 Summary: Connect to wpa_supplicant and handle connect and disconnect events
@@ -40,11 +40,13 @@ This package installs and sets up the SELinux policy security module for
 
 %prep
 %setup -q
+
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
 
 %build
-%{__make} %{?_smp_mflags}
+%{__make} %{?_smp_mflags} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
+
 %{__make} -f %{_datadir}/selinux/devel/Makefile
 
 
@@ -85,6 +87,9 @@ fi
 
 
 %changelog
+* Sun Dec 01 2013 kaorimatz <kaorimatz@gmail.com> 1.4-3
+* Build with $RPM_OPT_FLAGS and $RPM_LD_FLAGS
+
 * Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.4-2
 - Fix SELinux policy with regard to netctl
 - Fix wrong permissions
