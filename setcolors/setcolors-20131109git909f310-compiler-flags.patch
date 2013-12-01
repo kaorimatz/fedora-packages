@@ -1,0 +1,12 @@
+diff -u -r setcolors-20131109git909f310/Makefile setcolors-20131109git909f310.compiler-flags/Makefile
+--- setcolors-20131109git909f310/Makefile	2013-08-19 10:29:53.000000000 +0900
++++ setcolors-20131109git909f310.compiler-flags/Makefile	2013-12-01 21:35:58.559092502 +0900
+@@ -1,7 +1,7 @@
+ PREFIX=/usr/local
+ 
+ setcolors: setcolors.c
+-	gcc -Wall setcolors.c -o setcolors
++	gcc -Wall $(CFLAGS) $(LDFLAGS) setcolors.c -o setcolors
+ 
+ install: setcolors setcolors.1
+ 	install -Dm 755 setcolors "${DESTDIR}${PREFIX}/bin/setcolors"
