@@ -1,0 +1,14 @@
+diff -u -r dmenu-20131221git5ed5e90/config.mk dmenu-20131221git5ed5e90.make/config.mk
+--- dmenu-20131221git5ed5e90/config.mk	2013-12-21 22:33:48.997917934 +0900
++++ dmenu-20131221git5ed5e90.make/config.mk	2013-12-21 22:34:23.616604001 +0900
+@@ -22,8 +22,8 @@
+ 
+ # flags
+ CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
+-CFLAGS   = -ansi -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS  = -s ${LIBS}
++CFLAGS   = -ansi -pedantic -Wall -Os ${INCS} ${CPPFLAGS} ${RPM_OPT_FLAGS}
++LDFLAGS  = ${LIBS} ${RPM_LD_FLAGS}
+ 
+ # compiler and linker
+ CC = cc
