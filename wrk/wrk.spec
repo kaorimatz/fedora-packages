@@ -1,5 +1,5 @@
 Name: wrk
-Version: 3.0.4
+Version: 3.1.0
 Release: 1%{?dist}
 License: ASL 2.0
 URL: https://github.com/wg/wrk
@@ -34,14 +34,17 @@ install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
 
 
 %changelog
-* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 3.0.4-1
+* Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 3.1.0-1
+- Upgrade to upstream version 3.1.0
+
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> - 3.0.4-1
 - Upgrade to upstream version 3.0.4
 
-* Tue Nov 12 2013 kaorimatz <kaorimatz@gmail.com> 3.0.3-1
+* Tue Nov 12 2013 kaorimatz <kaorimatz@gmail.com> - 3.0.3-1
 - Upgrade to upstream version 3.0.3
 
-* Tue Oct 01 2013 kaorimatz <kaorimatz@gmail.com> 3.0.0-1
+* Tue Oct 01 2013 kaorimatz <kaorimatz@gmail.com> - 3.0.0-1
 - Upgrade to upstream version 3.0.0
 
-* Sat Jun 22 2013 kaorimatz <kaorimatz@gmail.com> 2.2.0-1
+* Sat Jun 22 2013 kaorimatz <kaorimatz@gmail.com> - 2.2.0-1
 - Initial package
