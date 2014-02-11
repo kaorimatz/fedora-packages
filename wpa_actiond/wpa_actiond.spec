@@ -4,9 +4,9 @@ restorecon -R %{_sysconfdir}/wpa_actiond;
 
 Name: wpa_actiond
 Version: 1.4
-Release: 3%{?dist}
-License: GPLv2
-URL: http://projects.archlinux.org/wpa_actiond.git/
+Release: 4%{?dist}
+License: GPLv2+
+URL: https://projects.archlinux.org/wpa_actiond.git
 Summary: Connect to wpa_supplicant and handle connect and disconnect events
 
 Source0: ftp://ftp.archlinux.org/other/wpa_actiond/%{name}-%{version}.tar.xz
@@ -87,13 +87,17 @@ fi
 
 
 %changelog
-* Sun Dec 01 2013 kaorimatz <kaorimatz@gmail.com> 1.4-3
-* Build with $RPM_OPT_FLAGS and $RPM_LD_FLAGS
+* Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.4-4
+- Fix license to GPLv2+
+- Fix URL
 
-* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.4-2
+* Sun Dec 01 2013 kaorimatz <kaorimatz@gmail.com> - 1.4-3
+- Build with $RPM_OPT_FLAGS and $RPM_LD_FLAGS
+
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> - 1.4-2
 - Fix SELinux policy with regard to netctl
 - Fix wrong permissions
 - Fix wrong dependencies for the SElinux policy module
 
-* Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> 1.4-1
+* Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> - 1.4-1
 - Initial package
