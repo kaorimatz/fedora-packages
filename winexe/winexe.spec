@@ -2,8 +2,8 @@
 
 Name: winexe
 Version: 1.1
-Release: 0.1.%{checkout}%{?dist}
-License: GPLv3
+Release: 0.2.%{checkout}%{?dist}
+License: GPLv3+
 URL: http://sourceforge.net/projects/winexe/
 Summary: Remote Windows-command executor
 
@@ -46,5 +46,8 @@ cd source
 
 
 %changelog
+* Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.1-0.2.20140208gitb787d2a
+- Fix license to GPLv3+
+
 * Sat Feb 08 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.1-0.1.20140208gitb787d2a
 - Initial package
