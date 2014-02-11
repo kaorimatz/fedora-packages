@@ -7,9 +7,9 @@ restorecon -R %{_unitdir}/netctl*;
 
 Name: netctl
 Version: 1.4
-Release: 1%{?dist}
-License: GPLv2+
-URL: http://projects.archlinux.org/%{name}.git/
+Release: 2%{?dist}
+License: GPLv3+
+URL: https://projects.archlinux.org/netctl.git
 Summary: Profile based systemd network management
 
 Source0: ftp://ftp.archlinux.org/other/packages/%{name}/%{name}-%{version}.tar.xz
@@ -132,27 +132,31 @@ fi
 
 
 %changelog
-* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.4-1
+* Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.4-2
+- Fix license to GPLv3+
+- Fix URL
+
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> - 1.4-1
 - Upgrade to upstream version 1.4
 - Remove ifplugd from dependencies
 
-* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> 1.3-3
+* Fri Nov 29 2013 kaorimatz <kaorimatz@gmail.com> - 1.3-3
 - Add SELinux policy
 - Fix to install auto.action
 
-* Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> 1.3-2
+* Sat Sep 07 2013 kaorimatz <kaorimatz@gmail.com> - 1.3-2
 - Require wpa_actiond
 
-* Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> 1.3-1
+* Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> - 1.3-1
 - Upgrade to upstream version 1.3
 
-* Sat Jul 27 2013 kaorimatz <kaorimatz@gmail.com> 1.2-1
+* Sat Jul 27 2013 kaorimatz <kaorimatz@gmail.com> - 1.2-1
 - Upgrade to upstream version 1.2
 - Remove -examples patch
 
-* Sun Jun 16 2013 kaorimatz <kaorimatz@gmail.com> 1.1-1
+* Sun Jun 16 2013 kaorimatz <kaorimatz@gmail.com> - 1.1-1
 - Upgrade to upstream version 1.1
 - Add missing requires on systemd
 
-* Sun May 19 2013 kaorimatz <kaorimatz@gmail.com> 1.0-1
+* Sun May 19 2013 kaorimatz <kaorimatz@gmail.com> - 1.0-1
 - Initial package
