@@ -1,8 +1,8 @@
 Name: jq
 Version: 1.3
-Release: 1%{?dist}
-License: BSD
-URL: http://stedolan.github.io/%{name}/
+Release: 2%{?dist}
+License: MIT
+URL: http://stedolan.github.io/jq/
 Summary: Command-line JSON processor
 
 Source0: https://github.com/stedolan/%{name}/archive/%{name}-%{version}.tar.gz
@@ -45,5 +45,8 @@ autoreconf --install
 
 
 %changelog
-* Tue Nov 12 2013 kaorimatz <kaorimatz@gmail.com> 1.3-1
+* Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.3-2
+- Fix license to MIT
+
+* Tue Nov 12 2013 kaorimatz <kaorimatz@gmail.com> - 1.3-1
 - Initial package
