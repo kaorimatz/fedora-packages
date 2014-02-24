@@ -1,6 +1,6 @@
 Name: dynamips
-Version: 0.2.10
-Release: 2%{?dist}
+Version: 0.2.11
+Release: 1%{?dist}
 License: GPLv2+
 URL: http://www.gns3.net/dynamips
 Summary: Cisco router emulator
@@ -26,7 +26,7 @@ CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS" %{__make} %{_smp_mflags}
 
 
 %install
-%{makeinstall} DESTDIR='%{buildroot}%{_usr}'
+%{makeinstall} DESTDIR='%{buildroot}' PREFIX='%{_usr}'
 
 
 %files
@@ -39,6 +39,9 @@ CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS" %{__make} %{_smp_mflags}
 
 
 %changelog
+* Sun Feb 23 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 0.2.11-1
+- Upgrade to upstream version 0.2.11
+
 * Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 0.2.10-2
 - Fix license to GPLv2+
 
