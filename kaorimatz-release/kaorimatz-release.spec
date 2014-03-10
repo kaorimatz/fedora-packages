@@ -1,5 +1,5 @@
 Name: kaorimatz-release
-Version: 19
+Version: 20
 Release: 1%{?dist}
 License: MIT
 URL: http://packages.kaorimatz.org/fedora
@@ -37,5 +37,8 @@ This package contains the GPG key and the yum configuration files for the
 
 
 %changelog
+* Mon Mar 10 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 20-1
+- Update to Fedora 20
+
 * Sat Mar 08 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 19-1
 - Initial package
