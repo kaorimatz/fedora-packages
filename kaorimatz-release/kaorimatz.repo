@@ -1,0 +1,20 @@
+[kaorimatz]
+name=kaorimatz - Fedora $releasever
+baseurl=http://packages.kaorimatz.org/fedora/$releasever/$basearch/packages/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1
+
+[kaorimatz-debuginfo]
+name=kaorimatz - Fedora $releasever - Debug
+baseurl=http://packages.kaorimatz.org/fedora/$releasever/$basearch/debuginfo/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1
+
+[kaorimatz-source]
+name=kaorimatz - Fedora $releasever - Source
+baseurl=http://packages.kaorimatz.org/fedora/$releasever/sources/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1

@@ -1,0 +1,20 @@
+[kaorimatz-rawhide]
+name=kaorimatz - Fedora Rawhide
+baseurl=http://packages.kaorimatz.org/fedora/rawhide/$basearch/packages/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1
+
+[kaorimatz-rawhide-debuginfo]
+name=kaorimatz - Fedora Rawhide - Debug
+baseurl=http://packages.kaorimatz.org/fedora/rawhide/$basearch/debuginfo/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1
+
+[kaorimatz-rawhide-source]
+name=kaorimatz - Fedora Rawhide - Source
+baseurl=http://packages.kaorimatz.org/fedora/rawhide/sources/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-kaorimatz
+gpgcheck=1
