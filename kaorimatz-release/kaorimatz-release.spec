@@ -1,6 +1,6 @@
 Name: kaorimatz-release
-Version: 20
-Release: 1%{?dist}
+Version: 21
+Release: 0.1%{?dist}
 License: MIT
 URL: http://packages.kaorimatz.org/fedora
 Summary: Configurations for kaorimatz repository
@@ -37,6 +37,9 @@ This package contains the GPG key and the yum configuration files for the
 
 
 %changelog
+* Mon Mar 10 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 21-0.1
+- Update to Fedora 21 (Rawhide)
+
 * Mon Mar 10 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 20-1
 - Update to Fedora 20
 
