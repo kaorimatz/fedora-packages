@@ -3,10 +3,10 @@
 Name: psgrep
 Version: 1.0.7
 Release: 0.1.%{checkout}%{?dist}
-Summary: Process list searching via grep
-
 License: GPLv3+
 URL: https://github.com/jvz/psgrep
+Summary: Process list searching via grep
+
 Source0: %{name}-%{checkout}.tar.bz2
 
 BuildArch: noarch
