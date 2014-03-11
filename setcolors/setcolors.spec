@@ -1,4 +1,4 @@
-%define checkout 20131109git909f310
+%global checkout 20131109git909f310
 
 Name: setcolors
 Version: 0.0.0
