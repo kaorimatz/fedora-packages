@@ -13,8 +13,8 @@ BuildArch: noarch
 Requires: zsh
 
 %description
-%{name} is a collection of new completion scripts that are not available in Zsh
-yet.
+zsh-completions is a collection of new completion scripts that are not available
+in Zsh yet.
 
 
 %prep

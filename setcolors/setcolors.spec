@@ -12,7 +12,7 @@ Patch0: %{name}-%{checkout}-compiler-flags.patch
 
 
 %description
-%{name} is a little utility to change the default color palette of the Linux
+setcolors is a little utility to change the default color palette of the Linux
 VT101 virtual console. The program accepts a configuration file containing the
 colors in hexadecimal form to use.
 

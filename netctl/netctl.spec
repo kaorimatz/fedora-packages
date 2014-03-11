@@ -44,11 +44,10 @@ Requires(postun): policycoreutils
 
 
 %description
-%{name} is a profile based systemd network management.
+netctl is a profile based systemd network management.
 
 %description selinux
-This package installs and sets up the SELinux policy security module for
-%{name}.
+This package installs and sets up the SELinux policy security module for netctl.
 
 
 %prep
