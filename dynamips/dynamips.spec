@@ -13,7 +13,7 @@ BuildRequires: libuuid-devel
 
 
 %description
-%{name} emulates Cisco router on a traditional PC. It requires IOS images which
+dynamips emulates Cisco router on a traditional PC. It requires IOS images which
 is not included in this package.
 
 
