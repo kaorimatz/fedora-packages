@@ -33,5 +33,5 @@ PREFIX=%{buildroot}%{_prefix} ./install.sh
 
 
 %changelog
-* Sat Jun 22 2013 kaorimatz <kaorimatz@gmail.com> 1.0.7-0.1.20130622git936fc18
+* Sat Jun 22 2013 kaorimatz <kaorimatz@gmail.com> - 1.0.7-0.1.20130622git936fc18
 - Initial package

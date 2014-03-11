@@ -35,7 +35,7 @@ install -m 644 src/_* %{buildroot}%{_datadir}/zsh/site-functions/
 
 
 %changelog
-* Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> 0.10.0-1
+* Sun Aug 11 2013 kaorimatz <kaorimatz@gmail.com> - 0.10.0-1
 - Upgrade to upstream version 0.10.0
-* Sun Jun 23 2013 kaorimatz <kaorimatz@gmail.com> 0.9.0-1
+* Sun Jun 23 2013 kaorimatz <kaorimatz@gmail.com> - 0.9.0-1
 - Initial package
