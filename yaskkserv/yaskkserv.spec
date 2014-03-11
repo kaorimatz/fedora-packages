@@ -48,5 +48,5 @@ install -d %{buildroot}%{_datadir}/skk
 
 
 %changelog
-* Sun Jun 16 2013 kaorimatz <kaorimatz@gmail.com> 0.5.4-1
+* Sun Jun 16 2013 kaorimatz <kaorimatz@gmail.com> - 0.5.4-1
 - Initial package
