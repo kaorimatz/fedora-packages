@@ -1,4 +1,4 @@
-%define checkout 20130622git936fc18
+%global checkout 20130622git936fc18
 
 Name: psgrep
 Version: 1.0.7
