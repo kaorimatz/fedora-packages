@@ -1,5 +1,6 @@
 %global checkout 20131221git5ed5e90
 
+
 Name: dmenu-xft
 Version: 4.5
 Release: 0.1.%{checkout}%{?dist}

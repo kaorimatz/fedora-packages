@@ -5,6 +5,7 @@ restorecon -R %{_libexecdir}/netctl; \
 restorecon -R %{_localstatedir}/run/netctl; \
 restorecon -R %{_unitdir}/netctl*;
 
+
 Name: netctl
 Version: 1.4
 Release: 2%{?dist}
@@ -30,7 +31,7 @@ Requires(preun): systemd
 Requires(postun): systemd
 
 %package selinux
-Summary: SELinux policy module for %{name}
+Summary: SELinux policy module for netctl
 
 BuildArch: noarch
 BuildRequires: selinux-policy-devel
