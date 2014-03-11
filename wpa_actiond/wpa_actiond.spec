@@ -30,12 +30,12 @@ Requires(postun): policycoreutils
 
 
 %description
-%{name} is a daemon that connects to wpa_supplicant and handles connect and
+wpa_actiond is a daemon that connects to wpa_supplicant and handles connect and
 disconnect events.
 
 %description selinux
 This package installs and sets up the SELinux policy security module for
-%{name}.
+wpa_actiond.
 
 
 %prep
