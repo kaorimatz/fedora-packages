@@ -4,7 +4,7 @@ restorecon -R %{_sysconfdir}/wpa_actiond;
 
 Name: wpa_actiond
 Version: 1.4
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: GPLv2+
 URL: https://projects.archlinux.org/wpa_actiond.git
 Summary: Connect to wpa_supplicant and handle connect and disconnect events
@@ -21,7 +21,7 @@ Summary: SELinux policy module for %{name}
 
 BuildArch: noarch
 BuildRequires: selinux-policy-devel
-Requires: %{name}%{?_isa} = %{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 Requires: selinux-policy >= %{_selinux_policy_version}
 Requires(post): libselinux-utils
 Requires(post): policycoreutils
@@ -87,6 +87,9 @@ fi
 
 
 %changelog
+* Tue Mar 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.4-5
+- Remove ISA dependency from wpa_actiond-selinux
+
 * Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.4-4
 - Fix license to GPLv2+
 - Fix URL
