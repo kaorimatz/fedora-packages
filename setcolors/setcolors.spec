@@ -37,8 +37,8 @@ colors in hexadecimal form to use.
 
 
 %changelog
-* Sun Dec 01 2013 kaorimatz <kaorimatz@gmail.com> 0.0.0-0.2.20131109git909f310
-* Build with $RPM_OPT_FLAGS and $RPM_LD_FLAGS
+* Sun Dec 01 2013 kaorimatz <kaorimatz@gmail.com> - 0.0.0-0.2.20131109git909f310
+- Build with $RPM_OPT_FLAGS and $RPM_LD_FLAGS
 
-* Sat Nov 09 2013 kaorimatz <kaorimatz@gmail.com> 0.0.0-0.1.20131109git909f310
+* Sat Nov 09 2013 kaorimatz <kaorimatz@gmail.com> - 0.0.0-0.1.20131109git909f310
 - Initial package
