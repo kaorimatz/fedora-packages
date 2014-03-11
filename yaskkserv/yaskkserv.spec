@@ -1,10 +1,10 @@
 Name: yaskkserv
 Version: 0.5.4
 Release: 1%{?dist}
-Summary: Yet Another SKK server
-
 License: GPLv2+
 URL: http://umiushi.org/~wac/yaskkserv/
+Summary: Yet Another SKK server
+
 Source0: http://umiushi.org/~wac/%{name}/%{name}-%{version}.tar.bz2
 
 BuildRequires: perl

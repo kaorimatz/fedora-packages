@@ -1,5 +1,6 @@
 %global checkout 20131109git909f310
 
+
 Name: setcolors
 Version: 0.0.0
 Release: 0.2.%{checkout}%{?dist}

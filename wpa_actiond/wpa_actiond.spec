@@ -2,6 +2,7 @@
 restorecon -R %{_bindir}/wpa_actiond; \
 restorecon -R %{_sysconfdir}/wpa_actiond;
 
+
 Name: wpa_actiond
 Version: 1.4
 Release: 5%{?dist}
@@ -17,7 +18,7 @@ Source3: %{name}.fc
 Requires: wpa_supplicant
 
 %package selinux
-Summary: SELinux policy module for %{name}
+Summary: SELinux policy module for wpa_actiond
 
 BuildArch: noarch
 BuildRequires: selinux-policy-devel

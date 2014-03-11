@@ -1,16 +1,17 @@
 Name: screenfetch
 Version: 3.2.2
 Release: 2%{?dist}
-Summary: Bash screenshot info grabber
-
 License: GPLv3+
 URL: http://git.silverirc.com/cgit.cgi/screenfetch.git/
+Summary: Bash screenshot info grabber
+
 Source0: http://git.silverirc.com/cgit.cgi/%{name}.git/snapshot/%{name}-%{version}.tar.bz2
 
 BuildArch: noarch
 Requires: glx-utils
 Requires: scrot
 Requires: xorg-x11-utils
+
 
 %description
 screenfetch is a tool which fetches system/theme information in terminal for

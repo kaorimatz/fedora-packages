@@ -1,12 +1,13 @@
 %global _python_bytecompile_errors_terminate_build 0
 
+
 Name: zsh-completions
 Version: 0.10.0
 Release: 1%{?dist}
+License: BSD
+URL: https://github.com/zsh-users/zsh-completions
 Summary: Additional completion definitions for Zsh
 
-License: BSD
-URL: https://github.com/zsh-users/%{name}
 Source0: https://github.com/zsh-users/%{name}/archive/%{version}.tar.gz
 
 BuildArch: noarch
