@@ -6,7 +6,7 @@ restorecon -R %{_unitdir}/netctl*;
 
 
 Name: netctl
-Version: 1.5
+Version: 1.6
 Release: 1%{?dist}
 License: GPLv3+
 URL: https://projects.archlinux.org/netctl.git
@@ -131,6 +131,9 @@ fi
 
 
 %changelog
+* Sat Mar 15 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.6-1
+- Upgrade to upstream version 1.6
+
 * Sat Mar 15 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.5-1
 - Upgrade to upstream version 1.5
 - Don't relabel security context of the state directory
