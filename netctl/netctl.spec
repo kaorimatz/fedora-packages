@@ -2,13 +2,12 @@
 restorecon -R %{_bindir}/netctl; \
 restorecon -R %{_bindir}/netctl-auto; \
 restorecon -R %{_libexecdir}/netctl; \
-restorecon -R %{_localstatedir}/run/netctl; \
 restorecon -R %{_unitdir}/netctl*;
 
 
 Name: netctl
-Version: 1.4
-Release: 2%{?dist}
+Version: 1.5
+Release: 1%{?dist}
 License: GPLv3+
 URL: https://projects.archlinux.org/netctl.git
 Summary: Profile based systemd network management
@@ -17,8 +16,8 @@ Source0: ftp://ftp.archlinux.org/other/packages/%{name}/%{name}-%{version}.tar.x
 Source1: %{name}.te
 Source2: %{name}.if
 Source3: %{name}.fc
-Patch0: %{name}-%{version}-ctrl-interface.patch
-Patch1: %{name}-%{version}-wpa_actiond-action-script.patch
+Patch0: %{name}-1.0-ctrl-interface.patch
+Patch1: %{name}-1.0-wpa_actiond-action-script.patch
 
 BuildArch: noarch
 BuildRequires: asciidoc
@@ -132,6 +131,11 @@ fi
 
 
 %changelog
+* Sat Mar 15 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.5-1
+- Upgrade to upstream version 1.5
+- Don't relabel security context of the state directory
+- Fix the name of the patches
+
 * Tue Feb 11 2014 Satoshi Matsumoto <kaorimatz@gmail.com> - 1.4-2
 - Fix license to GPLv3+
 - Fix URL
